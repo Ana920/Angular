@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="manifiest" href="manifest.json">
+        <script>
+            //cada petición http no va al servidor, sin antes pasar por este service worker
+            navigator.serviceWorker
+                && navigator.serviceWorker.register("./sw.js")
+                    .then((reg) => {console.log("SW Registered") })
+        </script>
+    </head>
+    <body>
+        Hola soy un mega cursor
+    </body>
+</html>
