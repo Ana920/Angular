@@ -1,0 +1,47 @@
+<div class="container mt-4">
+    <h2 class="mb-4">Lista de Contactos</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Género</th>
+                <th>Ruta</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Juan Pérez</td>
+                <td>1985-06-15</td>
+                <td>Masculino</td>
+                <td>
+                    <a routerLink = "editar/1" class ="btn btn-primary me-2">Editar</a>
+                    <button class="btn btn-danger">Eliminar</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>María García</td>
+                <td>1990-12-03</td>
+                <td>Femenino</td>
+                <td>
+                    <a routerLink = "editar/2" class ="btn btn-primary me-2">Editar</a>
+                    <button class="btn btn-danger">Eliminar</button>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Carlos Sánchez</td>
+                <td>1982-09-27</td>
+                <td>Masculino</td>
+                <td>
+                    <a routerLink = "editar/3" class ="btn btn-primary me-2">Editar</a>
+                    <button class="btn btn-danger">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-info" routerLink="nuevo">Agregar</button>
+</div>
