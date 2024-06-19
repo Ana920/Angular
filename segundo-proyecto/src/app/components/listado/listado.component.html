@@ -3,7 +3,6 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Nombre</th>
                 <th>Fecha de Nacimiento</th>
                 <th>Género</th>
@@ -11,8 +10,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
+            <tr *ngFor="let contacto of contactos">
+                <td>{{contacto.nombre}}</td>
+                <td>{{contacto.fechaNacimiento| date : 'yyyy-MM-dd'}}</td>
+                <td>{{contacto.documento}}</td>
+                <td>{{contacto.genero}}</td>
+                <td>
+                    <a [routerLink]=" 'editar/' + contacto.id" class="btn btn-primary me-2">Editar</a>
+                    <button class="btn btn-danger">Eliminar</button>
+                </td>
+                <!-- <td>1</td>
                 <td>Juan Pérez</td>
                 <td>1985-06-15</td>
                 <td>Masculino</td>
@@ -39,7 +46,7 @@
                 <td>
                     <a routerLink = "editar/3" class ="btn btn-primary me-2">Editar</a>
                     <button class="btn btn-danger">Eliminar</button>
-                </td>
+                </td> -->
             </tr>
         </tbody>
     </table>

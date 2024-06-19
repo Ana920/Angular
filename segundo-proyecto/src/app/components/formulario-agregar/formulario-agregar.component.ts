@@ -1,10 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { PropNames, objectProps } from '../../utils/strong-type-props';
 import { ContactoModel } from '../../models/contacto.model';
 import Swal from 'sweetalert2';
+import { ContactoService } from '../../services/contacto.service';
+import { ContactoServiceInterface } from '../../services/contacto.service.interface';
 
 @Component({
   selector: 'app-formulario-agregar',
@@ -17,7 +19,8 @@ export class FormularioAgregarComponent {
   form : FormGroup;
   campos : PropNames<ContactoModel>;
 
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder, 
+    private service: ContactoServiceInterface, private router: Router) { 
     this.form = this.fb.group({
       documento: ['', [Validators.required, Validators.min(1000000), Validators.max(99999999)]],
       nombre: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
@@ -43,6 +46,11 @@ export class FormularioAgregarComponent {
 
   submitForm(){
     if(this.form.valid){
+      this.service.agregar(this.form.value).subscribe({
+        next:() => {
+          this.router.navigate(['']);
+        }
+      });
       Swal.fire({
         title:'Datos enviados',
         text: JSON.stringify(this.form.value),

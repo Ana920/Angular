@@ -20,11 +20,11 @@
     </div>
     <div class="form-group">
         <label for="txtDocumento">Documento</label>
-        <input type="number" id="txtDocumento" class="form-control" formControlName="documento">
+        <input type="number" id="txtDocumento" class="form-control" [formControlName]="campos.documento">
     </div>
     <div class="form-group">
         <label for="txtFechaNacimiento">Fecha nacimiento</label>
-        <input type="date" id="txtFechaNacimiento" class="form-control" formControlName="fechaNacimiento">
+        <input type="date" id="txtFechaNacimiento" class="form-control" [formControlName]="campos.fechaNacimiento">
     </div>
     <div class="form-group">
         <label for="cmbGenero">Genero</label> 
