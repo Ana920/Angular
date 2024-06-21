@@ -5,7 +5,7 @@ import { Router, RouterModule } from '@angular/router';
 import { PropNames, objectProps } from '../../utils/strong-type-props';
 import { ContactoModel } from '../../models/contacto.model';
 import Swal from 'sweetalert2';
-import { ContactoService } from '../../services/contacto.service';
+//import { ContactoService } from '../../services/contacto.service';
 import { ContactoServiceInterface } from '../../services/contacto.service.interface';
 
 @Component({

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ContactoService } from '../../services/contacto.service';
+//import { ContactoService } from '../../services/contacto.service';
 import { ContactoModel } from '../../models/contacto.model';
 import { CommonModule } from '@angular/common';
 import { ContactoServiceInterface } from '../../services/contacto.service.interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-listado',
@@ -21,11 +22,35 @@ export class ListadoComponent implements OnInit {
 
   }
    //se ejecuta cuando el componente ya se mostró en la pantalla
-   ngOnInit(){
+   recuperarContactosDelBackend(){
     this.service.getContactos().subscribe({
       next:(lista: ContactoModel[]) => {
         this.contactos = lista;
       }
+    })
+  }
+
+  ngOnInit(){
+      this.recuperarContactosDelBackend();
+  }
+
+  eliminar(id:number){
+    Swal.fire({
+      title: '¿Está seguro?',
+      text: 'Está a punto de eliminar un contacto',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.service.eliminar(id).subscribe({
+          next : () => {
+            this.recuperarContactosDelBackend();
+          }
+        })
+      }
+    
     })
   }
 }

@@ -8,4 +8,6 @@ export abstract class ContactoServiceInterface {
     abstract agregar(nuevo: ContactoModel) : Observable<any>;
 
     abstract eliminar(id:number): Observable<any>;
+
+    abstract modificar(id: number): Observable<any>;
 }

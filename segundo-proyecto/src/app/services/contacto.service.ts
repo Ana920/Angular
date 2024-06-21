@@ -8,7 +8,7 @@ import { ContactoServiceInterface } from './contacto.service.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class ContactoService implements ContactoServiceInterface{
+export class ContactoService extends ContactoServiceInterface{
 
   private contactos: ContactoModel[] = [
     { id: 1, documento: 123, nombre: 'Juan', fechaNacimiento: new Date(), genero: GeneroModel.Masculino },
@@ -17,23 +17,27 @@ export class ContactoService implements ContactoServiceInterface{
   ]
 
   constructor() {
-    
+    super();
   }
 
   //si contactos fuera una api, 
-  getContactos() : Observable<ContactoModel[]> {
+  override getContactos() : Observable<ContactoModel[]> {
     //Llamada asíncrona con promesas
     //fetch('https://jsonplaceholder.typicode.com/users').then()
     return of(this.contactos);
   }
 
-  agregar(nuevo: ContactoModel) : Observable<any>{
+  override agregar(nuevo: ContactoModel) : Observable<any>{
     nuevo.id = Math.max(...this.contactos.map(c => c.id)) + 1;
     this.contactos.push(nuevo);
     return of("OK");
   }
 
-  eliminar(id:number): Observable<any>{
+  override eliminar(id:number): Observable<any>{
     return of();
   }
+
+  override modificar(id: number): Observable<any> {
+    throw new Error("Method not implemented.");
+}
 }
